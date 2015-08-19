@@ -1,11 +1,8 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-
 {% block title %}Login{% endblock %}
 {% block content %}
-
-
 <div class="row" >
   <div class=" col-md-6 col-md-offset-3" >
     <h1>Log in</h1>
@@ -13,12 +10,12 @@
     {{ state }}
     <form action="/login/" method="post">{% csrf_token %}
       {% if next %}
-      <input type="hidden" name="next" value="{{ next }}" class: "form-control"/>
+      <input type="hidden" name="next" value="{{ next }}" class:"form-control"/>
       {% endif %}
       username:
-      <input type="text" name="username" value="{{ username}}" class: "form-control"/><br/>
+      <input type="text" name="username" value="{{ username}}" class:"form-control"/><br/>
       password:
-      <input type="password" name="password" value="" class: "form-control"/><br/>
+      <input type="password" name="password" value="" class:"form-control"/><br/>
 
       <input type="submit" value="Log In"/>
     </form>

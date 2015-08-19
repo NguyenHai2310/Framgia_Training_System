@@ -26,7 +26,7 @@ def login_user(request):
             if user.is_active:
                 login(request, user)
                 state = "You're successfully logged in!"
-                return  HttpResponseRedirect("/")
+                return HttpResponseRedirect("/")
             else:
                 state = "Your account is not active, please contact the site admin."
         else:
@@ -34,14 +34,14 @@ def login_user(request):
 
     c = {}
     c.update(csrf(request))
-    return render_to_response('user/auth.html',{'state':state, 'username': username}, context_instance = RequestContext(request))
+    return render_to_response('user/auth.html', {'state':state, 'username': username}, context_instance=RequestContext(request))
 
 
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            new_user = form.save()
+            form.save()
             username = form.data['username']
             password = form.data['password1']
             user = authenticate(username=username, password=password)
